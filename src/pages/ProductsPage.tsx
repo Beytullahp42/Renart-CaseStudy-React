@@ -22,12 +22,14 @@ function ProductsPage() {
     const [error, setError] = useState<string | null>(null);
 
     const [minPrice, setMinPrice] = useState(0);
-    const [maxPrice, setMaxPrice] = useState(10000);
+    const [maxPrice, setMaxPrice] = useState(5000);
 
     const [minPopularity, setMinPopularity] = useState(0);
     const [maxPopularity, setMaxPopularity] = useState(5);
 
     const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+    const [isFilterApplied, setIsFilterApplied] = useState(false);
 
     const handleFilter = async () => {
         setLoading(true);
@@ -36,6 +38,7 @@ function ProductsPage() {
         try {
             const filteredProducts = await filterProducts(minPrice, maxPrice, minPopularity, maxPopularity);
             setProducts(filteredProducts);
+            setIsFilterApplied(true);
         } catch (error: unknown) {
             if (error instanceof Error) {
                 setError(error.message);
@@ -46,6 +49,15 @@ function ProductsPage() {
             setLoading(false);
         }
     };
+
+    const clearFilters = () => {
+        setMinPrice(0);
+        setMaxPrice(5000);
+        setMinPopularity(0);
+        setMaxPopularity(5);
+        setIsFilterApplied(false);
+        fetchAllProducts();
+    }
 
 
     const fetchAllProducts = async () => {
@@ -83,12 +95,22 @@ function ProductsPage() {
             <p className="text-[45px] text-black font-avenir-book">
                 Product List
             </p>
-            <button
-                onClick={() => setIsFilterOpen(true)}
-                className="bg-white text-black border-black border-1 px-4 py-2 rounded mb-8"
-            >
-                Open Filters
-            </button>
+            <div className={"flex flex-row items-center justify-center gap-4"}>
+                <button
+                    onClick={() => setIsFilterOpen(true)}
+                    className="bg-white text-black border-black border-1 px-4 py-2 rounded mb-8"
+                >
+                    Filter
+                </button>
+                {isFilterApplied && (
+                    <button
+                    onClick={() => clearFilters()}
+                    className="bg-black text-white px-4 py-2 rounded mb-8"
+                    >
+                        Clear Filters
+                    </button>
+                )}
+            </div>
             {products.length === 0 && !loading && (
                 <p className="text-center text-gray-600 text-lg mt-4">No products match your filters.</p>
             )}
@@ -97,7 +119,7 @@ function ProductsPage() {
                 scrollbar={{
                     hide: false,
                     draggable: true,
-                    dragSize: 250,
+                    dragSize: 100,
                 }}
                 navigation={true}
                 modules={[Scrollbar, Navigation]}

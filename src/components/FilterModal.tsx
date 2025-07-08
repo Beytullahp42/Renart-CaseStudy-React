@@ -1,5 +1,3 @@
-// src/components/FilterModal.tsx
-
 interface FilterModalProps {
     isOpen: boolean;
     closeModal: () => void;
@@ -45,42 +43,51 @@ function FilterModal({
                 <div className="bg-white rounded-xl p-6 shadow-xl w-full max-w-md pointer-events-auto">
                     <h2 className="text-xl font-semibold mb-4">Filter Products</h2>
 
-                    <div className="space-y-4">
+                    <div className="space-y-6">
                         <div>
-                            <label className="block text-sm font-medium">Min Price</label>
-                            <input
-                                type="number"
-                                value={minPrice}
-                                onChange={e => setMinPrice(Number(e.target.value))}
-                                className="border rounded p-1 w-full"
-                            />
+                            <div className="flex gap-4">
+                                <div className="flex-1">
+                                    <label className="block text-xs font-medium mb-1">Min Price</label>
+                                    <input
+                                        type="number"
+                                        value={minPrice}
+                                        onChange={e => setMinPrice(Number(e.target.value))}
+                                        className="border rounded p-1 w-full"
+                                    />
+                                </div>
+                                <div className="flex-1">
+                                    <label className="block text-xs font-medium mb-1">Max Price</label>
+                                    <input
+                                        type="number"
+                                        value={maxPrice}
+                                        onChange={e => setMaxPrice(Number(e.target.value))}
+                                        className="border rounded p-1 w-full"
+                                    />
+                                </div>
+                            </div>
                         </div>
+
                         <div>
-                            <label className="block text-sm font-medium">Max Price</label>
-                            <input
-                                type="number"
-                                value={maxPrice}
-                                onChange={e => setMaxPrice(Number(e.target.value))}
-                                className="border rounded p-1 w-full"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium">Min Popularity</label>
-                            <input
-                                type="number"
-                                value={minPopularity}
-                                onChange={e => setMinPopularity(Number(e.target.value))}
-                                className="border rounded p-1 w-full"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium">Max Popularity</label>
-                            <input
-                                type="number"
-                                value={maxPopularity}
-                                onChange={e => setMaxPopularity(Number(e.target.value))}
-                                className="border rounded p-1 w-full"
-                            />
+                            <div className="flex gap-4">
+                                <div className="flex-1">
+                                    <label className="block text-xs font-medium mb-1">Min Popularity</label>
+                                    <input
+                                        type="number"
+                                        value={minPopularity}
+                                        onChange={e => setMinPopularity(Number(e.target.value))}
+                                        className="border rounded p-1 w-full"
+                                    />
+                                </div>
+                                <div className="flex-1">
+                                    <label className="block text-xs font-medium mb-1">Max Popularity</label>
+                                    <input
+                                        type="number"
+                                        value={maxPopularity}
+                                        onChange={e => setMaxPopularity(Number(e.target.value))}
+                                        className="border rounded p-1 w-full"
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
 
