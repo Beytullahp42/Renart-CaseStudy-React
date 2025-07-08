@@ -19,7 +19,7 @@ export default function ProductTile({product}: ProductTileProps) {
     const stars = Math.round(product.popularityScore * 5 * 10) / 10;
 
     return (
-        <div className="w-[290px] flex flex-col items-start">
+        <div className="w-[220px] flex flex-col items-start">
             <div className="w-[220px] h-[220px] rounded-xl overflow-hidden bg-gray-100 mb-4">
                 <img
                     src={product.images[selectedColor]}

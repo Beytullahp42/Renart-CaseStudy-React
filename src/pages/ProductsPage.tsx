@@ -47,8 +47,8 @@ function ProductsPage() {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen px-4 py-10">
-            <p className="text-[45px] text-black mb-10 font-avenir-book" >
+        <div className="flex flex-col items-center justify-center min-h-screen px-4 pb-10">
+            <p className="text-[45px] text-black mb-24 font-avenir-book" >
                 Product List
             </p>
             <Swiper
@@ -59,7 +59,20 @@ function ProductsPage() {
                 }}
                 navigation={true}
                 modules={[Scrollbar, Navigation]}
-                slidesPerView={4}
+                breakpoints={{
+                    0: {
+                        slidesPerView: 1,
+                    },
+                    640: {
+                        slidesPerView: 2,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                    },
+                    1280: {
+                        slidesPerView: 4,
+                    },
+                }}
                 className="w-full"
             >
                 {products.map((product) => (
@@ -70,6 +83,7 @@ function ProductsPage() {
                     </SwiperSlide>
                 ))}
             </Swiper>
+
         </div>
     );
 }
