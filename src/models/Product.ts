@@ -22,10 +22,6 @@ class Product {
         this.images = images;
         this.price = price;
     }
-
-    getImage(color: 'yellow' | 'rose' | 'white'): string {
-        return this.images[color];
-    }
 }
 
 export default Product;

@@ -41,13 +41,13 @@ function FilterModal({
 
             <div className="fixed inset-0 flex justify-center items-center z-50 pointer-events-none">
                 <div className="bg-white rounded-xl p-6 shadow-xl w-full max-w-md pointer-events-auto">
-                    <h2 className="text-xl font-semibold mb-4">Filter Products</h2>
+                    <h2 className="text-xl font-avenir-book mb-4">Filter Products</h2>
 
                     <div className="space-y-6">
                         <div>
                             <div className="flex gap-4">
                                 <div className="flex-1">
-                                    <label className="block text-xs font-medium mb-1">Min Price</label>
+                                    <label className="block text-xs font-montserrat-medium mb-1">Min Price</label>
                                     <input
                                         type="number"
                                         value={minPrice}
@@ -56,7 +56,7 @@ function FilterModal({
                                     />
                                 </div>
                                 <div className="flex-1">
-                                    <label className="block text-xs font-medium mb-1">Max Price</label>
+                                    <label className="block text-xs font-montserrat-medium mb-1">Max Price</label>
                                     <input
                                         type="number"
                                         value={maxPrice}
@@ -70,7 +70,7 @@ function FilterModal({
                         <div>
                             <div className="flex gap-4">
                                 <div className="flex-1">
-                                    <label className="block text-xs font-medium mb-1">Min Popularity</label>
+                                    <label className="block text-xs font-montserrat-medium mb-1">Min Popularity</label>
                                     <input
                                         type="number"
                                         value={minPopularity}
@@ -79,7 +79,7 @@ function FilterModal({
                                     />
                                 </div>
                                 <div className="flex-1">
-                                    <label className="block text-xs font-medium mb-1">Max Popularity</label>
+                                    <label className="block text-xs font-montserrat-medium mb-1">Max Popularity</label>
                                     <input
                                         type="number"
                                         value={maxPopularity}
