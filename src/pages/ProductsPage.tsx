@@ -1,7 +1,15 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import type Product from "../models/Product";
-import { fetchProducts } from "../services/ProductService";
+import {fetchProducts} from "../services/ProductService";
 import ProductTile from "../components/ProductTile";
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css/scrollbar'
+
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {Navigation, Scrollbar} from 'swiper/modules';
 
 function ProductsPage() {
     const [products, setProducts] = useState<Product[]>([]);
@@ -39,10 +47,29 @@ function ProductsPage() {
     }
 
     return (
-        <div className="p-4 flex flex-wrap justify-center gap-6">
-            {products.map((product) => (
-                <ProductTile key={product.name} product={product} />
-            ))}
+        <div className="flex flex-col items-center justify-center min-h-screen px-4 py-10">
+            <p className="text-[45px] text-black mb-10 font-avenir-book" >
+                Product List
+            </p>
+            <Swiper
+                scrollbar={{
+                    hide: false,
+                    draggable: true,
+                    dragSize: 250,
+                }}
+                navigation={true}
+                modules={[Scrollbar, Navigation]}
+                slidesPerView={4}
+                className="w-full"
+            >
+                {products.map((product) => (
+                    <SwiperSlide key={product.name}>
+                        <div className="flex justify-center mb-15">
+                            <ProductTile product={product} />
+                        </div>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
         </div>
     );
 }

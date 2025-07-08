@@ -1,214 +1,52 @@
 @import "tailwindcss";
 
-/* ---------------- Avenir ---------------- */
-
 @layer base {
-
     @font-face {
-        font-family: 'Avenir';
-        src: url('/fonts/avenir/Avenir-Light.ttf') format('truetype');
-        font-weight: 300;
+        font-family: "Avenir-Book";
+        src: url("/fonts/avenir/Avenir-Book.ttf") format("truetype");
+        font-weight: normal;
         font-style: normal;
     }
-
     @font-face {
-        font-family: 'Avenir';
-        src: url('/fonts/avenir/Avenir-LightOblique.ttf') format('truetype');
-        font-weight: 300;
-        font-style: italic;
-    }
-
-    @font-face {
-        font-family: 'Avenir';
-        src: url('/fonts/avenir/Avenir-Book.ttf') format('truetype');
-        font-weight: 400;
+        font-family: "Montserrat-Regular";
+        src: url("/fonts/montserrat/Montserrat-Regular.ttf") format("truetype");
+        font-weight: normal;
         font-style: normal;
     }
-
     @font-face {
-        font-family: 'Avenir';
-        src: url('/fonts/avenir/Avenir-BookOblique.ttf') format('truetype');
-        font-weight: 400;
-        font-style: italic;
-    }
-
-    @font-face {
-        font-family: 'Avenir';
-        src: url('/fonts/avenir/Avenir-Medium.ttf') format('truetype');
+        font-family: "Montserrat-Medium";
+        src: url("/fonts/montserrat/Montserrat-Medium.otf") format("opentype");
         font-weight: 500;
         font-style: normal;
     }
 
-    @font-face {
-        font-family: 'Avenir';
-        src: url('/fonts/avenir/Avenir-MediumOblique.ttf') format('truetype');
-        font-weight: 500;
-        font-style: italic;
+    :root {
+        --font-avenir-book: "Avenir-Book", sans-serif;
+        --font-montserrat-regular: "Montserrat-Regular", sans-serif;
+        --font-montserrat-medium: "Montserrat-Medium", sans-serif;
     }
-
-    @font-face {
-        font-family: 'Avenir';
-        src: url('/fonts/avenir/Avenir-Heavy.ttf') format('truetype');
-        font-weight: 700;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Avenir';
-        src: url('/fonts/avenir/Avenir-HeavyOblique.ttf') format('truetype');
-        font-weight: 700;
-        font-style: italic;
-    }
-
-    @font-face {
-        font-family: 'Avenir';
-        src: url('/fonts/avenir/Avenir-Black.ttf') format('truetype');
-        font-weight: 900;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Avenir';
-        src: url('/fonts/avenir/Avenir-BlackOblique.ttf') format('truetype');
-        font-weight: 900;
-        font-style: italic;
-    }
-
-    /* ---------------- Montserrat ---------------- */
-    @font-face {
-        font-family: 'Montserrat';
-        src: url('/fonts/montserrat/Montserrat-Thin.otf') format('opentype');
-        font-weight: 100;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Montserrat';
-        src: url('/fonts/montserrat/Montserrat-ThinItalic.otf') format('opentype');
-        font-weight: 100;
-        font-style: italic;
-    }
-
-    @font-face {
-        font-family: 'Montserrat';
-        src: url('/fonts/montserrat/Montserrat-ExtraLight.otf') format('opentype');
-        font-weight: 200;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Montserrat';
-        src: url('/fonts/montserrat/Montserrat-ExtraLightItalic.otf') format('opentype');
-        font-weight: 200;
-        font-style: italic;
-    }
-
-    @font-face {
-        font-family: 'Montserrat';
-        src: url('/fonts/montserrat/Montserrat-Light.otf') format('opentype');
-        font-weight: 300;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Montserrat';
-        src: url('/fonts/montserrat/Montserrat-LightItalic.otf') format('opentype');
-        font-weight: 300;
-        font-style: italic;
-    }
-
-    @font-face {
-        font-family: 'Montserrat';
-        src: url('/fonts/montserrat/Montserrat-Regular.ttf') format('truetype');
-        font-weight: 400;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Montserrat';
-        src: url('/fonts/montserrat/Montserrat-Italic.ttf') format('truetype');
-        font-weight: 400;
-        font-style: italic;
-    }
-
-    @font-face {
-        font-family: 'Montserrat';
-        src: url('/fonts/montserrat/Montserrat-Medium.otf') format('opentype');
-        font-weight: 500;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Montserrat';
-        src: url('/fonts/montserrat/Montserrat-MediumItalic.otf') format('opentype');
-        font-weight: 500;
-        font-style: italic;
-    }
-
-    @font-face {
-        font-family: 'Montserrat';
-        src: url('/fonts/montserrat/Montserrat-SemiBold.otf') format('opentype');
-        font-weight: 600;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Montserrat';
-        src: url('/fonts/montserrat/Montserrat-SemiBoldItalic.otf') format('opentype');
-        font-weight: 600;
-        font-style: italic;
-    }
-
-    @font-face {
-        font-family: 'Montserrat';
-        src: url('/fonts/montserrat/Montserrat-Bold.ttf') format('truetype');
-        font-weight: 700;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Montserrat';
-        src: url('/fonts/montserrat/Montserrat-BoldItalic.ttf') format('truetype');
-        font-weight: 700;
-        font-style: italic;
-    }
-
-    @font-face {
-        font-family: 'Montserrat';
-        src: url('/fonts/montserrat/Montserrat-ExtraBold.otf') format('opentype');
-        font-weight: 800;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Montserrat';
-        src: url('/fonts/montserrat/Montserrat-ExtraBoldItalic.otf') format('opentype');
-        font-weight: 800;
-        font-style: italic;
-    }
-
-    @font-face {
-        font-family: 'Montserrat';
-        src: url('/fonts/montserrat/Montserrat-Black.otf') format('opentype');
-        font-weight: 900;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Montserrat';
-        src: url('/fonts/montserrat/Montserrat-BlackItalic.otf') format('opentype');
-        font-weight: 900;
-        font-style: italic;
-    }
-
 }
 
 @layer utilities {
-    .font-avenir {
-        font-family: 'Avenir', sans-serif;
+    .font-avenir-book {
+        font-family: var(--font-avenir-book), serif;
     }
+    .font-montserrat-regular {
+        font-family: var(--font-montserrat-regular), serif;
+    }
+    .font-montserrat-medium {
+        font-family: var(--font-montserrat-medium), serif;
+    }
+}
 
-    .font-montserrat {
-        font-family: 'Montserrat', sans-serif;
-    }
+.swiper-button-next,
+.swiper-button-prev {
+    color: black !important;
+}
+.swiper-scrollbar-drag {
+    background: black !important;
+}
+
+.swiper-scrollbar {
+
 }

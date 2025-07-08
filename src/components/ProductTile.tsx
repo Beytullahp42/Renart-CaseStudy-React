@@ -1,64 +1,79 @@
 import {useState} from "react";
 import type Product from "../models/Product.ts";
+import StarRatings from 'react-star-ratings';
+
 
 interface ProductTileProps {
     product: Product;
 }
 
-function ProductTile({ product }: ProductTileProps) {
-    const [selectedColor, setSelectedColor] = useState<"yellow" | "rose" | "white">("yellow");
+const colorOptions = {
+    yellow: {label: "Yellow Gold", hex: "#E6CA97"},
+    white: {label: "White Gold", hex: "#D9D9D9"},
+    rose: {label: "Rose Gold", hex: "#E1A4A9"},
+};
 
-    // Calculate number of filled stars from popularityScore (0 to 5 stars)
-    const starsCount = Math.round(product.popularityScore * 5);
+export default function ProductTile({product}: ProductTileProps) {
+    const [selectedColor, setSelectedColor] = useState<"yellow" | "white" | "rose">("yellow");
 
-    // Render stars (filled ★ and empty ☆)
-    const renderStars = () => {
-        return [...Array(5)].map((_, i) => (
-            <span key={i} className="text-yellow-400 text-xl">
-        {i < starsCount ? "★" : "☆"}
-      </span>
-        ));
-    };
+    const stars = Math.round(product.popularityScore * 5 * 10) / 10;
 
     return (
-        <div className="product-tile w-80 p-4 border rounded-lg shadow-md bg-white flex flex-col items-center">
-            <img
-                src={product.images[selectedColor]}
-                alt={`${product.name} - ${selectedColor}`}
-                className="w-64 h-64 object-cover rounded-md mb-4"
-            />
-            <h3 className="text-lg font-semibold">{product.name}</h3>
-            <p className="text-green-700 font-bold mb-2">${product.price.toFixed(2)}</p>
+        <div className="w-[290px] flex flex-col items-start">
+            <div className="w-[220px] h-[220px] rounded-xl overflow-hidden bg-gray-100 mb-4">
+                <img
+                    src={product.images[selectedColor]}
+                    alt={`${product.name} - ${selectedColor}`}
+                    className="w-full h-full object-cover"
+                />
+            </div>
 
-            <div className="mb-2 flex gap-4">
-                {(["yellow", "rose", "white"] as const).map((color) => (
-                    <label key={color} className="flex items-center cursor-pointer">
+            <p className="font-montserrat-medium text-[15px] mb-1">{product.name}</p>
+            <p className="font-montserrat-regular text-[15px] mb-3">${product.price.toFixed(2)} USD</p>
+
+            <div className="flex items-center gap-2 mb-2">
+                {(["yellow", "white", "rose"] as const).map((color) => (
+                    <label key={color} className="relative cursor-pointer">
                         <input
                             type="radio"
-                            name={`color-picker-${product.name}`}
+                            name={`color-${product.name}`}
                             value={color}
                             checked={selectedColor === color}
                             onChange={() => setSelectedColor(color)}
-                            className="hidden"
+                            className="peer hidden"
                         />
                         <span
-                            className={`w-6 h-6 rounded-full border-2 ${
-                                selectedColor === color ? "border-amber-500" : "border-gray-300"
-                            }`}
-                            style={{
-                                backgroundColor:
-                                    color === "yellow" ? "#FFD700" :
-                                        color === "rose" ? "#B76E79" :
-                                            "#F0F0F0", // white fallback
-                            }}
-                        />
+                            className={`
+          p-[3px] rounded-full 
+          ${selectedColor === color ? "border-1 border-black" : ""}
+          flex items-center justify-center
+        `}
+                        >
+        <span
+            className="w-5 h-5 rounded-full"
+            style={{backgroundColor: colorOptions[color].hex}}
+        />
+      </span>
                     </label>
                 ))}
             </div>
 
-            <div className="stars">{renderStars()}</div>
+
+            <p className="text-[12px] font-avenir-book">{colorOptions[selectedColor].label}</p>
+
+            <div className={"flex items-center gap-2"}>
+            <StarRatings
+                rating={stars}
+                starRatedColor="#FFD700"
+                starEmptyColor="#D9D9D9"
+                starDimension="20px"
+                starSpacing="2px"
+                numberOfStars={5}
+                name="rating"
+
+            />
+                <p className={"font-avenir-book text-[14px]"}>{stars}</p>
+            </div>
         </div>
     );
 }
-
-export default ProductTile;
