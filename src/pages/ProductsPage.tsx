@@ -14,6 +14,7 @@ import 'swiper/css/scrollbar'
 
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation, Scrollbar} from 'swiper/modules';
+import FilterModal from "../components/FilterModal.tsx";
 
 function ProductsPage() {
     const [products, setProducts] = useState<Product[]>([]);
@@ -25,6 +26,8 @@ function ProductsPage() {
 
     const [minPopularity, setMinPopularity] = useState(0);
     const [maxPopularity, setMaxPopularity] = useState(5);
+
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
 
     const handleFilter = async () => {
         setLoading(true);
@@ -77,38 +80,15 @@ function ProductsPage() {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen px-4 pb-10">
-            <p className="text-[45px] text-black mb-24 font-avenir-book" >
+            <p className="text-[45px] text-black font-avenir-book">
                 Product List
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 items-center mb-10">
-                <div>
-                    <label className="block text-sm font-medium">Min Price</label>
-                    <input type="number" value={minPrice} onChange={e => setMinPrice(Number(e.target.value))}
-                           className="border rounded p-1 w-28" />
-                </div>
-                <div>
-                    <label className="block text-sm font-medium">Max Price</label>
-                    <input type="number" value={maxPrice} onChange={e => setMaxPrice(Number(e.target.value))}
-                           className="border rounded p-1 w-28" />
-                </div>
-                <div>
-                    <label className="block text-sm font-medium">Min Popularity</label>
-                    <input type="number" value={minPopularity} onChange={e => setMinPopularity(Number(e.target.value))}
-                           className="border rounded p-1 w-28" />
-                </div>
-                <div>
-                    <label className="block text-sm font-medium">Max Popularity</label>
-                    <input type="number" value={maxPopularity} onChange={e => setMaxPopularity(Number(e.target.value))}
-                           className="border rounded p-1 w-28" />
-                </div>
-                <button
-                    onClick={handleFilter}
-                    className="bg-black text-white px-4 py-2 rounded"
-                >
-                    Filter
-                </button>
-            </div>
-
+            <button
+                onClick={() => setIsFilterOpen(true)}
+                className="bg-white text-black border-black border-1 px-4 py-2 rounded mb-8"
+            >
+                Open Filters
+            </button>
             {products.length === 0 && !loading && (
                 <p className="text-center text-gray-600 text-lg mt-4">No products match your filters.</p>
             )}
@@ -128,7 +108,7 @@ function ProductsPage() {
                     640: {
                         slidesPerView: 2,
                     },
-                    1024: {
+                    900: {
                         slidesPerView: 3,
                     },
                     1280: {
@@ -140,12 +120,24 @@ function ProductsPage() {
                 {products.map((product) => (
                     <SwiperSlide key={product.name}>
                         <div className="flex justify-center mb-15">
-                            <ProductTile product={product} />
+                            <ProductTile product={product}/>
                         </div>
                     </SwiperSlide>
                 ))}
             </Swiper>
-
+            <FilterModal
+                isOpen={isFilterOpen}
+                closeModal={() => setIsFilterOpen(false)}
+                minPrice={minPrice}
+                maxPrice={maxPrice}
+                minPopularity={minPopularity}
+                maxPopularity={maxPopularity}
+                setMinPrice={setMinPrice}
+                setMaxPrice={setMaxPrice}
+                setMinPopularity={setMinPopularity}
+                setMaxPopularity={setMaxPopularity}
+                handleFilter={handleFilter}
+            />
         </div>
     );
 }
