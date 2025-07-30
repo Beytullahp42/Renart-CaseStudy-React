@@ -83,7 +83,10 @@ function ProductsPage() {
     }, []);
 
     if (loading) {
-        return <p className="text-center mt-10 text-lg">Loading products...</p>;
+        return <>
+            <p className="text-center mt-10 text-lg">Loading products...</p>
+            <p className="text-center mt-10 text-sm">Because the API is hosted on Render free tier, it might take a while to load the products.</p>
+        </>;
     }
 
     if (error) {
@@ -104,8 +107,8 @@ function ProductsPage() {
                 </button>
                 {isFilterApplied && (
                     <button
-                    onClick={() => clearFilters()}
-                    className="bg-black text-white px-4 py-2 rounded mb-8"
+                        onClick={() => clearFilters()}
+                        className="bg-black text-white px-4 py-2 rounded mb-8"
                     >
                         Clear Filters
                     </button>
