@@ -26,4 +26,4 @@ This is the frontend application for a full-stack web case study built as part o
 
 - 📦 **Back End Repository:** https://github.com/Beytullahp42/Renart-CaseStudy-Laravel
 - 🌐 **Live Front End:** https://renart-case-study-react.vercel.app/
-- 🌐 **Live Back End:** https://beytullahpaytar.online/
+- 🌐 **Live Back End:** https://renart-case-study-beytp.onrender.com/

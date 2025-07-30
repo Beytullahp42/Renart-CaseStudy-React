@@ -2,7 +2,7 @@ import Product from "../models/Product.ts";
 import axios from "axios";
 
 export async function fetchProducts(): Promise<Product[]> {
-    const response = await axios.get("https://beytullahpaytar.online/api/products");
+    const response = await axios.get("https://renart-case-study-beytp.onrender.com/api/products");
     // const response = await axios.get("http://localhost:8000/api/products");
     const ringsData = response.data;
     return ringsData.map((ring: Product) => new Product(
