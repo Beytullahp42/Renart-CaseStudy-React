@@ -1,10 +1,14 @@
 import Product from "../models/Product.ts";
 import axios from "axios";
 
+const api = axios.create({
+    baseURL: "https://renart-cs-laravel.beytullahp.com",
+});
+
 export async function fetchProducts(): Promise<Product[]> {
-    const response = await axios.get("https://renart-case-study-beytp.onrender.com/api/products");
-    // const response = await axios.get("http://localhost:8000/api/products");
+    const response = await api.get("/api/products");
     const ringsData = response.data;
+
     return ringsData.map((ring: Product) => new Product(
         ring.name,
         ring.popularityScore,
@@ -24,21 +28,15 @@ export async function filterProducts(
     minPopularity: number,
     maxPopularity: number
 ): Promise<Product[]> {
-    // const response = await axios.post("http://localhost:8000/api/products", {
-    //         minPrice,
-    //         maxPrice,
-    //         minPopularity,
-    //         maxPopularity
-    //     }
-    // );
-
-    const response = await axios.post("https://beytullahpaytar.online/api/products", {
+    const response = await api.post("/api/products", {
         minPrice,
         maxPrice,
         minPopularity,
         maxPopularity
     });
+
     const filteredRingsData = response.data;
+
     return filteredRingsData.map((ring: Product) => new Product(
         ring.name,
         ring.popularityScore,
@@ -51,3 +49,4 @@ export async function filterProducts(
         ring.price
     ));
 }
+
